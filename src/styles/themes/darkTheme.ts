@@ -12,9 +12,11 @@ export const darkTheme = {
     'base-subtext': '#afaaaaff',
     'base-label-input': '#A1A1AA',
     'base-input': '#202333',
-    'base-hover': '#EEEEEE',
+    'base-hover': '#151A31',
     'base-text-hover': '#000000',
     'nav-color': '#0e1224ff',
+    'button-hover': '#1F6391',
+    'button-active': '#3498DB',
 
     'tag-blue': '#026AA2',
     'tag-green': '#027A48',

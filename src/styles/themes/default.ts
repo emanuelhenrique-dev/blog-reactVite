@@ -15,6 +15,8 @@ export const defaultTheme = {
     'base-hover': '#EEEEEE',
     'base-text-hover': '#FFFFFF',
     'nav-color': '#f7f7f7ff',
+    'button-hover': '#1F6391',
+    'button-active': '#3498DB',
 
     'tag-blue': '#026AA2',
     'tag-green': '#027A48',
