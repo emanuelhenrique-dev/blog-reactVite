@@ -125,7 +125,7 @@ export const PostInfo = styled.div`
 `;
 
 export interface TagProps {
-  category: 'Tecnologia' | 'Design' | 'Ti Concursos';
+  $category: 'Tecnologia' | 'Design' | 'Ti Concursos';
 }
 
 export const Tag = styled.span<TagProps>`
@@ -140,17 +140,17 @@ export const Tag = styled.span<TagProps>`
   font-size: 0.625rem;
   line-height: 140%;
 
-  background-color: ${({ category, theme }) =>
-    category === 'Tecnologia'
+  background-color: ${({ $category, theme }) =>
+    $category === 'Tecnologia'
       ? theme.colors['tag-blue2']
-      : category === 'Design'
+      : $category === 'Design'
       ? theme.colors['tag-pink2']
       : theme.colors['tag-green2']};
 
-  color: ${({ category, theme }) =>
-    category === 'Tecnologia'
+  color: ${({ $category, theme }) =>
+    $category === 'Tecnologia'
       ? theme.colors['tag-blue']
-      : category === 'Design'
+      : $category === 'Design'
       ? theme.colors['tag-pink']
       : theme.colors['tag-green']};
 `;

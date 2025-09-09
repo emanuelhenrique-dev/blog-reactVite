@@ -1,7 +1,8 @@
 //assets
 import { ArrowUpRightIcon, CalendarDotsIcon } from '@phosphor-icons/react';
-import image7 from '/image7.png';
 import avatarImg from '/avatar.png';
+import defaultImage from '/src/assets/pexels-jplenio-1103970.jpg';
+import { AdminUsers } from '../../data/users';
 
 // styles
 import { CardInfo, ImageWrapper, PostCardContainer } from './PostCard.style';
@@ -10,38 +11,49 @@ import { CardInfo, ImageWrapper, PostCardContainer } from './PostCard.style';
 import { useTheme } from 'styled-components';
 
 interface PostCardProps {
-  categoria: string;
+  title: string;
+  subtitle: string;
+  tag: string;
+  author: string;
+  date: string;
+  image?: string | undefined;
+  link: string;
 }
 
-export function PostCard({ categoria }: PostCardProps) {
+export function PostCard({
+  title,
+  subtitle,
+  tag,
+  author,
+  date,
+  image,
+  link
+}: PostCardProps) {
   const theme = useTheme();
 
+  const authorImage =
+    AdminUsers.find((user) => user.name === author)?.avatarImg ?? avatarImg;
+
   return (
-    <PostCardContainer>
-      <ImageWrapper
-        category={categoria as 'Tecnologia' | 'Design' | 'Ti Concursos'}
-      >
-        <img src={image7} alt="Post Thumbnail" />
-        <span>{categoria}</span>
+    <PostCardContainer to={link}>
+      <ImageWrapper $category={tag as 'Tecnologia' | 'Design' | 'Ti Concursos'}>
+        <img src={image ?? defaultImage} alt="Post Thumbnail" />
+        <span>{tag}</span>
       </ImageWrapper>
 
       <CardInfo>
         <div className="author-date">
-          <img src={avatarImg} alt="imagem avatar" />
-          <span>Jesica koli</span>
+          <img src={authorImage} alt="imagem avatar" />
+          <span>{author}</span>
           <span></span>
           <span>
-            <CalendarDotsIcon size={12} /> 28 Dezembro 2024
+            <CalendarDotsIcon size={14} /> {date}
           </span>
         </div>
-        <h3>
-          The Impact of Technology on the Workplace: How Technology is Changing
-        </h3>
-        <p>
-          Os periféricos certos têm impacto direto no seu desempenho diário.
-        </p>
-        <ArrowUpRightIcon size={22} color={theme.colors['blue-primary']} />
+        <h3>{title}</h3>
+        <p>{subtitle}</p>
       </CardInfo>
+      <ArrowUpRightIcon size={22} color={theme.colors['blue-primary']} />
     </PostCardContainer>
   );
 }

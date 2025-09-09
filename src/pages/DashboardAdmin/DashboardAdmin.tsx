@@ -4,7 +4,7 @@ import { DashboardAdminContainer } from './DashboardAdmin.style';
 export function DashboardAdmin() {
   return (
     <DashboardAdminContainer>
-      <Login Text={'Admin Dashboard Login'} />
+      <Login Text={'Admin Dashboard Login'} type="admin" />
     </DashboardAdminContainer>
   );
 }

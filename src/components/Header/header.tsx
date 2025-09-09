@@ -1,4 +1,7 @@
+//rrd imports
 import { Link } from 'react-router-dom';
+
+//styles
 import {
   HeaderContainer,
   HeaderContent,
@@ -7,14 +10,41 @@ import {
   SearchInput,
   Switch
 } from './header.style';
+
+//assets imports
 import { MagnifyingGlassIcon, UserIcon } from '@phosphor-icons/react';
-import { useRef } from 'react';
+
+//react imports
+import { useEffect, useRef, useState } from 'react';
+
+//context imports
 import { useThemeContext } from '../../contexts/ThemeContext';
 
+type User = {
+  username: string;
+  name: string;
+  avatarImg: string;
+};
 export function Header() {
+  //hooks
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    //verificar se tem alguém logado(no caso admin)
+    const isLoggedIn = localStorage.getItem('isLoggedInAdmin') === 'true';
+    if (isLoggedIn) {
+      const savedUser = localStorage.getItem('adminUser');
+      if (savedUser) {
+        setUser(JSON.parse(savedUser));
+      }
+    }
+  }, []);
+
+  //refs
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
+  //contexts
   const { isDark, toggleTheme } = useThemeContext();
 
   function handleToggleMenu() {
@@ -51,10 +81,25 @@ export function Header() {
             <li>Sobre</li>
             <li>Contato</li>
             <li id="login">
-              <button>
-                <UserIcon size={16} />
-                <span>Login</span>
-              </button>
+              {!user ? (
+                <button>
+                  <UserIcon size={16} />
+                  <span>Login</span>
+                </button>
+              ) : (
+                <img
+                  src={user.avatarImg}
+                  alt=""
+                  style={{
+                    width: 29,
+                    height: 29,
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '1px solid #2980B9'
+                  }}
+                />
+              )}
+
               <Switch>
                 <input
                   id="toggle"

@@ -1,6 +1,6 @@
-//theme imports
+//context imports
 import { ThemeContextProvider } from './contexts/ThemeContext';
-
+import { PostsContextProvider } from './contexts/PostsContext';
 //styles
 import { GlobalStyle } from './styles/global';
 
@@ -14,8 +14,9 @@ export function App() {
   return (
     <ThemeContextProvider>
       <GlobalStyle />
-
-      <RouterProvider router={Router} />
+      <PostsContextProvider>
+        <RouterProvider router={Router} />
+      </PostsContextProvider>
     </ThemeContextProvider>
   );
 }

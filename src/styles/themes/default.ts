@@ -17,6 +17,8 @@ export const defaultTheme = {
     'nav-color': '#f7f7f7ff',
     'button-hover': '#1F6391',
     'button-active': '#3498DB',
+    'border-card-color': '#ecf0f6',
+    'box-shadow': 'rgba(5, 4, 4, 0.25)',
 
     'tag-blue': '#026AA2',
     'tag-green': '#027A48',

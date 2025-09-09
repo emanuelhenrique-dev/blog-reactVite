@@ -20,9 +20,11 @@ import {
 
 //components
 import { PostList } from './PostList/PostList';
+import { usePosts } from '../../contexts/PostsContext';
 
 export function Home() {
-  console.log('asdsad');
+  const { posts } = usePosts();
+
   return (
     <HomeContainer>
       <Heading>
@@ -36,7 +38,7 @@ export function Home() {
               <img src={image1} alt="post recomendado 1" />
             </div>
             <PostInfo>
-              <Tag category="Tecnologia">Tecnologia</Tag>
+              <Tag $category="Tecnologia">Tecnologia</Tag>
               <h3>Periféricos essenciais para aumentar sua produtividade</h3>
               <div className="author-date">
                 <img src={avatarImg} alt="imagem avatar" />
@@ -60,7 +62,7 @@ export function Home() {
             <div>
               <img src={image2} alt="post recomendado 2" />
               <PostInfo>
-                <Tag category="Design">Design</Tag>
+                <Tag $category="Design">Design</Tag>
                 <h3>Figma facilidade</h3>
                 <div className="author-date">
                   <img src={avatarImg} alt="imagem avatar" />
@@ -79,7 +81,7 @@ export function Home() {
             <div>
               <img src={image3} alt="post recomendado 3" />
               <PostInfo>
-                <Tag category="Ti Concursos">Ti Concursos</Tag>
+                <Tag $category="Ti Concursos">Ti Concursos</Tag>
                 <h3>Dicas para o CNU</h3>
                 <div className="author-date">
                   <img src={avatarImg} alt="imagem avatar" />
@@ -100,7 +102,7 @@ export function Home() {
       </FeaturedPosts>
 
       <PostsListContainer>
-        <PostList />
+        <PostList posts={posts} />
       </PostsListContainer>
     </HomeContainer>
   );

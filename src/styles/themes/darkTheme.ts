@@ -17,6 +17,8 @@ export const darkTheme = {
     'nav-color': '#0e1224ff',
     'button-hover': '#1F6391',
     'button-active': '#3498DB',
+    'border-card-color': 'rgba(236, 240, 246, 0.20)',
+    'box-shadow': 'rgba(5, 4, 4, 1)',
 
     'tag-blue': '#026AA2',
     'tag-green': '#027A48',

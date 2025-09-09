@@ -11,8 +11,13 @@ import {
   PostListContainer,
   PostsListHeading
 } from './PostList.style';
+import type { Post } from '../../../reducers/posts/reducer';
 
-export function PostList() {
+interface PostList {
+  posts: Post[];
+}
+
+export function PostList({ posts }: PostList) {
   return (
     <PostListContainer>
       <PostsListHeading>
@@ -38,10 +43,20 @@ export function PostList() {
       </FilterContainer>
 
       <ListContainer>
-        <PostCard categoria={'Tecnologia'} />
-        <PostCard categoria={'Design'} />
-        <PostCard categoria={'Ti Concursos'} />
-        <PostCard categoria={'Tecnologia'} />
+        {posts.map((post) => (
+          <PostCard
+            title={post.title}
+            subtitle={post.subtitle}
+            tag={post.tag}
+            author={post.author}
+            date={post.dateCreated}
+            image={
+              post.contentJSON.blocks.find((block) => block.type === 'image')
+                ?.data.file?.url
+            }
+            link={`/post/${post.id}`}
+          />
+        ))}
       </ListContainer>
     </PostListContainer>
   );
