@@ -1,8 +1,8 @@
 //components
 import { Home } from './Home/home';
-import { PostPage } from './PostPage/PostPage';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import { PostError } from '../components/PostError/PostError';
+import { PostPage } from './PostPage/PostPage';
 
 //rrd imports
 import { createBrowserRouter, Navigate } from 'react-router-dom';
