@@ -1,5 +1,5 @@
 //rrd imports
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 //styles
 import {
@@ -77,9 +77,15 @@ export function Header() {
 
         <HeaderNav role="menu" ref={navRef}>
           <ul>
-            <li>Inicio</li>
-            <li>Sobre</li>
-            <li>Contato</li>
+            <li>
+              <NavLink to={'/'}>Inicio</NavLink>
+            </li>
+            <li>
+              <NavLink to={'/about'}>Sobre</NavLink>
+            </li>
+            <li>
+              <NavLink to={'/contact'}>Contato</NavLink>
+            </li>
             <li id="login">
               {!user ? (
                 <button>

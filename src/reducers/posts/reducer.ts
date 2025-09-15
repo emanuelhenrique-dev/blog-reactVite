@@ -1,3 +1,4 @@
+import type { OutputData } from '@editorjs/editorjs';
 import { ActionTypes, type Actions } from './actions';
 import { produce } from 'immer';
 
@@ -21,16 +22,21 @@ export interface Post {
   author: string;
   authorAvatar: string;
   lastUpdateAuthor: string;
-  tag: 'Tecnologia' | 'Design' | 'Ti Concursos';
+  tag: 'Tecnologia' | 'Design' | 'Ti Concursos' | 'Programação';
   dateCreated: string;
   dateUpdated: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  contentJSON: any; //PostContent;
+  contentJSON: OutputData; //PostContent;
+}
+
+export interface MainPosts {
+  main: string;
+  side1: string;
+  side2: string;
 }
 
 interface PostsState {
   posts: Post[];
-  mainPosts: Post[];
+  mainPosts: MainPosts;
 }
 
 export const PostsReducer = (state: PostsState, action: Actions) => {
@@ -60,6 +66,13 @@ export const PostsReducer = (state: PostsState, action: Actions) => {
         );
 
         draft.posts.splice(index, 1); // remove o post encontrado
+      });
+    }
+
+    // atualizar o mainPost
+    case ActionTypes.UPDATE_MAIN_POSTS: {
+      return produce(state, (draft) => {
+        draft.mainPosts[action.payload.slot] = action.payload.postId;
       });
     }
   }

@@ -127,6 +127,23 @@ export const HeaderNav = styled.nav`
       list-style: none;
       cursor: pointer;
       user-select: none;
+      width: fit-content;
+      height: fit-content;
+
+      a {
+        font-family: 'Noto Sans';
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 120%;
+        text-transform: none;
+        padding: 2px 6px;
+
+        &.active {
+          color: ${(props) => props.theme.colors.white};
+          background-color: ${(props) => props.theme.colors['blue-primary']};
+          border-radius: 35px 5px 35px 5px;
+        }
+      }
 
       &:hover {
         color: ${(props) => props.theme.colors['blue-primary']};

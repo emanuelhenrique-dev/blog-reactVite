@@ -6,19 +6,28 @@ import {
   type ReactNode
 } from 'react';
 import { posts as initialPosts } from '../data/posts';
-import { PostsReducer, type Post } from '../reducers/posts/reducer';
+import {
+  PostsReducer,
+  type MainPosts,
+  type Post
+} from '../reducers/posts/reducer';
 import {
   createPostAction,
   removePostAction,
+  updateMainPostAction,
   updatePostAction
 } from '../reducers/posts/actions';
 
 interface PostsContextType {
   posts: Post[];
-  mainPosts: Post[];
+  mainPosts: MainPosts;
   addPost: (post: Post) => void;
   updatePost: (post: Post) => void;
   removePost: (postId: Post['id']) => void;
+  updateMainPost: (
+    postId: Post['id'],
+    slot: 'main' | 'side1' | 'side2'
+  ) => void;
 }
 
 interface CartContextProviderProps {
@@ -33,7 +42,7 @@ export function PostsContextProvider({ children }: CartContextProviderProps) {
     PostsReducer,
     {
       posts: initialPosts,
-      mainPosts: {}
+      mainPosts: { main: '', side1: '', side2: '' }
     },
     (initialState) => {
       const storedPostsAsJSON = localStorage.getItem(
@@ -57,6 +66,13 @@ export function PostsContextProvider({ children }: CartContextProviderProps) {
     dispatch(removePostAction(postId));
   }
 
+  function updateMainPost(
+    postId: Post['id'],
+    slot: 'main' | 'side1' | 'side2'
+  ) {
+    dispatch(updateMainPostAction(postId, slot));
+  }
+
   // Atualizar e salva no storage
   useEffect(() => {
     const postsStateJSON = JSON.stringify(postsState);
@@ -66,7 +82,14 @@ export function PostsContextProvider({ children }: CartContextProviderProps) {
 
   return (
     <PostsContext.Provider
-      value={{ posts, mainPosts, addPost, removePost, updatePost }}
+      value={{
+        posts,
+        mainPosts,
+        addPost,
+        removePost,
+        updatePost,
+        updateMainPost
+      }}
     >
       {children}
     </PostsContext.Provider>

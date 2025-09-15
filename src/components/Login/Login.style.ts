@@ -261,7 +261,7 @@ export const CheckboxContainer = styled.div`
 `;
 
 interface ButtonVariants {
-  variant: 'blue' | 'black';
+  $variant: 'blue' | 'black';
 }
 
 export const Button = styled.button<ButtonVariants>`
@@ -281,7 +281,7 @@ export const Button = styled.button<ButtonVariants>`
 
   // variant blue
   ${(props) =>
-    props.variant === 'blue' &&
+    props.$variant === 'blue' &&
     css`
       background-color: ${props.theme.colors['blue-primary']};
       color: #fff;
@@ -297,7 +297,7 @@ export const Button = styled.button<ButtonVariants>`
 
   //variant black
   ${(props) =>
-    props.variant === 'black' &&
+    props.$variant === 'black' &&
     css`
       gap: 8px;
 

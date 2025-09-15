@@ -12,7 +12,7 @@ function getLoggedAdminUser() {
 }
 
 //Carregar os posts antes de carregar a pagina
-export async function postLoader({ params }: { params: Params<string> }) {
+export async function postLoader({ params }: { params?: Params<string> }) {
   const storedPosts = localStorage.getItem('@blog-react:posts-state-1.0.0');
 
   if (!storedPosts) {
@@ -21,6 +21,13 @@ export async function postLoader({ params }: { params: Params<string> }) {
       headers: { 'Content-Type': 'application/json' }
     });
   }
+
+  const user = getLoggedAdminUser();
+  // ⚡ Caso seja página de "new post"
+  if (!params?.id) {
+    return { user };
+  }
+
   // console.log(params);
   const { posts } = JSON.parse(storedPosts);
   // console.log(posts);
@@ -33,8 +40,6 @@ export async function postLoader({ params }: { params: Params<string> }) {
       headers: { 'Content-Type': 'application/json' }
     });
   }
-
-  const user = getLoggedAdminUser();
 
   return { post, user };
 }

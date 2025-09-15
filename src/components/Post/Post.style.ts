@@ -14,7 +14,7 @@ export const PostHeader = styled.header`
   .heading {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     font-family: 'Noto Sans';
 
     h1 {
@@ -148,7 +148,16 @@ export const PostContent = styled.section`
 
     img {
       border-radius: 8.93757px;
+      max-width: 600px;
     }
+  }
+
+  figure.image-border img {
+    border: 2px solid ${(props) => props.theme.colors['blue-primary']};
+  }
+
+  figure.image-stretched img {
+    max-width: 100%;
   }
 
   // blockquote
@@ -185,6 +194,13 @@ export const PostContent = styled.section`
     p {
       font-size: 1.08rem;
       line-height: 1.8rem;
+    }
+
+    // image
+    figure {
+      img {
+        width: 100%;
+      }
     }
 
     // blockquote

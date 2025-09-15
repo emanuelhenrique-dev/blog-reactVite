@@ -29,8 +29,7 @@ export function Post({ post }: PostProps) {
         </div>
       </PostHeader>
       <PostContent>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        {post.contentJSON?.blocks?.map((block: any, i: number) =>
+        {post.contentJSON?.blocks?.map((block, i: number) =>
           renderBlock(block, i)
         )}
       </PostContent>

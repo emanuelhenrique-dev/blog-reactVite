@@ -89,7 +89,9 @@ export const renderBlock = (block: any, index: number) => {
       return (
         <blockquote key={index}>
           {text && <span dangerouslySetInnerHTML={{ __html: text }} />}
-          {caption && <footer>- {caption}</footer>}
+          {caption && caption.replace(/<br\s*\/?>/gi, '') && (
+            <footer>- {caption}</footer>
+          )}
         </blockquote>
       );
     }
@@ -114,9 +116,6 @@ export const renderBlock = (block: any, index: number) => {
             src={file?.url}
             alt={caption || ''}
             style={{
-              maxWidth: stretched ? '100%' : '600px',
-              width: '100%',
-              border: withBorder ? '2px solid #ddd' : 'none',
               background: withBackground ? '#f7f7f7' : 'transparent'
             }}
           />

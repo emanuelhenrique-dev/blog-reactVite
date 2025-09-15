@@ -3,6 +3,7 @@ import type { TagProps } from '../../pages/Home/home.style';
 import { Link as onLink } from 'react-router-dom';
 
 export const PostCardContainer = styled(onLink)`
+  position: relative;
   width: 100%;
   max-width: 960px;
   display: flex;
@@ -68,8 +69,8 @@ export const ImageWrapper = styled.div<TagProps>`
     object-fit: cover;
     display: block;
 
-    width: 110%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     transition: transform 0.3s ease;
   }
 
@@ -152,6 +153,7 @@ export const CardInfo = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 2; /* número de linhas */
     -webkit-box-orient: vertical;
+    padding-bottom: 2px;
   }
 
   p {

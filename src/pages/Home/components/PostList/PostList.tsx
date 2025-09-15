@@ -2,7 +2,7 @@
 import { MagnifyingGlassIcon } from '@phosphor-icons/react';
 
 //components
-import { PostCard } from '../../../components/PostCard/PostCard';
+import { PostCard } from '../../../../components/PostCard/PostCard';
 
 // styles
 import {
@@ -11,7 +11,8 @@ import {
   PostListContainer,
   PostsListHeading
 } from './PostList.style';
-import type { Post } from '../../../reducers/posts/reducer';
+
+import type { Post } from '../../../../reducers/posts/reducer';
 
 interface PostList {
   posts: Post[];
@@ -45,13 +46,14 @@ export function PostList({ posts }: PostList) {
       <ListContainer>
         {posts.map((post) => (
           <PostCard
+            key={post.id}
             title={post.title}
             subtitle={post.subtitle}
             tag={post.tag}
             author={post.author}
             date={post.dateCreated}
             image={
-              post.contentJSON.blocks.find((block) => block.type === 'image')
+              post.contentJSON?.blocks?.find((block) => block.type === 'image')
                 ?.data.file?.url
             }
             link={`/post/${post.id}`}

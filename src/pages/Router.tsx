@@ -1,6 +1,6 @@
 //components
 import { Home } from './Home/home';
-import { PostPage } from './PostPage/postPage';
+import { PostPage } from './PostPage/PostPage';
 import { DefaultLayout } from '../layouts/DefaultLayout';
 import { PostError } from '../components/PostError/PostError';
 
@@ -16,7 +16,10 @@ import { PostsManager, PostsManagerLoader } from './PostsManager/PostsManager';
 import { PostDashboard } from './PostsManager/PostDashboard/PostDashboard';
 import { PostEditor } from './PostsManager/PostEditor/PostEditor';
 
+//loaders
 import { postLoader } from '../loaders/postLoader';
+import { AboutPage } from './AboutPage/AboutPage';
+import { ContactPage } from './ContactPage/ContactPage';
 
 // Rota privada
 function PrivateRoute({ element }: { element: JSX.Element }) {
@@ -32,11 +35,22 @@ export const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Home />,
+        loader: postLoader
       },
       {
         path: '/post/:id',
-        element: <PostPage />
+        element: <PostPage />,
+        loader: postLoader,
+        errorElement: <PostError />
+      },
+      {
+        path: '/about',
+        element: <AboutPage />
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />
       },
       {
         path: '/dashboard2490admin',
@@ -58,12 +72,13 @@ export const Router = createBrowserRouter([
           },
           {
             path: '/dashboard2490admin/posts-manager/:id/edit_post', // editar post
-            element: <PrivateRoute element={<PostEditor />} />,
+            element: <PrivateRoute element={<PostEditor mode="edit" />} />,
             loader: postLoader
           },
           {
             path: '/dashboard2490admin/posts-manager/new_post', // editar post
-            element: <PrivateRoute element={<PostEditor />} />
+            element: <PrivateRoute element={<PostEditor mode="new" />} />,
+            loader: postLoader
           }
         ]
       }

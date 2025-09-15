@@ -3,6 +3,7 @@ import { PageHeader } from '../components/PageHeader/PageHeader';
 import { PostContainer, PostDashboardContainer } from './PostDashboard.style';
 import { Post } from '../../../components/Post/Post';
 import type { Post as PostType } from '../../../reducers/posts/reducer';
+import { usePosts } from '../../../contexts/PostsContext';
 
 export async function PostDashboardLoader() {
   const user = localStorage.getItem('adminUser');
@@ -17,11 +18,9 @@ export function PostDashboard() {
     user: { name: string; avatarImg: string };
   };
 
-  window.scrollTo(0, 0);
+  const { removePost } = usePosts();
 
-  function handleCreatePost() {
-    console.log('bilada');
-  }
+  window.scrollTo(0, 0);
 
   return (
     <PostDashboardContainer>
@@ -33,8 +32,18 @@ export function PostDashboard() {
         updatedAt={post.dateUpdated}
         lastUpdateAuthor={post.lastUpdateAuthor}
         username={user.name}
-        primaryAction={{ label: 'Editar Post', onClick: handleCreatePost }}
-        secondaryAction={{ label: 'Deletar Post', onClick: handleCreatePost }}
+        primaryAction={{
+          label: 'Editar Post',
+          onClick: () =>
+            navigate(`/dashboard2490admin/posts-manager/${post.id}/edit_post`)
+        }}
+        secondaryAction={{
+          label: 'Deletar Post',
+          onClick: () => {
+            removePost(post.id);
+            navigate('/dashboard2490admin/posts-manager');
+          }
+        }}
       />
       <PostContainer>
         <Post

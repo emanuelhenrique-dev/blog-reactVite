@@ -101,7 +101,7 @@ export function Login({ Text, type }: LoginProps) {
               <a href="#">Esqueceu a senha?</a>
             </CheckboxContainer>
           )}
-          <Button variant="blue" type="submit">
+          <Button $variant="blue" type="submit">
             Entrar
           </Button>
         </FormContainer>
@@ -109,7 +109,7 @@ export function Login({ Text, type }: LoginProps) {
         <Divider></Divider>
         {type !== 'admin' && (
           <>
-            <Button variant="black">
+            <Button $variant="black">
               <img src={GoogleArt} alt="" /> Ou faça login com o Google{' '}
             </Button>
             <FooterLink>

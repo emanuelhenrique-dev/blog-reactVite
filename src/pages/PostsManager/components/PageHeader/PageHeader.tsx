@@ -31,7 +31,9 @@ export function PageHeader({
   createdAt,
   updatedAt,
   primaryAction,
-  secondaryAction
+  secondaryAction,
+  type,
+  form
 }: PageHeaderProps) {
   return (
     <PageHeaderContainer>
@@ -60,7 +62,7 @@ export function PageHeader({
 
           {(createdAt || updatedAt) && (
             <Dates>
-              {createdAt && <p>Post criado no dia {createdAt}</p>}
+              {createdAt && <p>Post criado no dia {createdAt}.</p>}
               {updatedAt && (
                 <p title={lastUpdateAuthor}>
                   Data da Ultima atualização({lastUpdateAuthor}) : {updatedAt}
@@ -74,6 +76,8 @@ export function PageHeader({
           primaryAction={primaryAction}
           direction={'column'}
           secondaryAction={secondaryAction}
+          type={type}
+          form={form}
         />
       </ActionsBar>
     </PageHeaderContainer>

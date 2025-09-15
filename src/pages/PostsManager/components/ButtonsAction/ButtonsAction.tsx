@@ -4,7 +4,7 @@ export interface ButtonsActionProps {
   primaryAction: {
     // Botão principal
     label: string;
-    onClick: () => void;
+    onClick?: () => void;
   };
   secondaryAction?: {
     // Botão opcional (ex: deletar)
@@ -12,15 +12,21 @@ export interface ButtonsActionProps {
     onClick: () => void;
   };
   direction?: 'row' | 'column';
+  type?: 'button' | 'submit' | 'reset';
+  form?: string | undefined;
 }
 export function ButtonsAction({
   primaryAction,
   secondaryAction,
-  direction
+  direction,
+  type,
+  form
 }: ButtonsActionProps) {
   return (
     <ButtonsActionContainer style={{ flexDirection: direction }}>
-      <button onClick={primaryAction.onClick}>{primaryAction.label}</button>
+      <button type={type} form={form} onClick={primaryAction.onClick}>
+        {primaryAction.label}
+      </button>
       {secondaryAction && (
         <button onClick={secondaryAction.onClick}>
           {secondaryAction.label}
