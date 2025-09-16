@@ -100,7 +100,7 @@ export function PostPage() {
       </ContentContainer>
 
       <ExplorePosts>
-        <h3>Explorar mais conteúdos</h3>
+        <h3>Explorar mais conteúdos </h3>
         <div className="more-posts">
           {randomPosts.map((post) => {
             return (

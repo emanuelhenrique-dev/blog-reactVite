@@ -1,8 +1,9 @@
 # React + TypeScript + Vite
 
-Projeto demo de um Blog feito com REACT + TS + VITE:
+Projeto demo de um Blog feito com REACT + TS + VITE
 
-Para entrar na administração
+Para entrar na administração:
+AdminAdress:
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
