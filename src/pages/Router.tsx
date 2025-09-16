@@ -20,6 +20,7 @@ import { PostEditor } from './PostsManager/PostEditor/PostEditor';
 import { postLoader } from '../loaders/postLoader';
 import { AboutPage } from './AboutPage/AboutPage';
 import { ContactPage } from './ContactPage/ContactPage';
+import { SearchPage } from './SearchPage/SearchPage';
 
 // Rota privada
 function PrivateRoute({ element }: { element: JSX.Element }) {
@@ -42,6 +43,10 @@ export const Router = createBrowserRouter([
         element: <PostPage />,
         loader: postLoader,
         errorElement: <PostError />
+      },
+      {
+        path: '/search_posts',
+        element: <SearchPage />
       },
       {
         path: '/about',

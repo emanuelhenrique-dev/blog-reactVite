@@ -1,12 +1,9 @@
-//assets
-import { MagnifyingGlassIcon } from '@phosphor-icons/react';
-
 //components
 import { PostCard } from '../../../../components/PostCard/PostCard';
+import { Filter } from '../../../../components/Filter/FIlter';
 
 // styles
 import {
-  FilterContainer,
   ListContainer,
   PostListContainer,
   PostsListHeading
@@ -14,51 +11,44 @@ import {
 
 import type { Post } from '../../../../reducers/posts/reducer';
 
+import { useState } from 'react';
+
 interface PostList {
   posts: Post[];
 }
 
 export function PostList({ posts }: PostList) {
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
+
   return (
     <PostListContainer>
       <PostsListHeading>
         <h2>Todas as postagens</h2>
       </PostsListHeading>
-      <FilterContainer>
-        <div id="tags-filter">
-          <button className="selected" value="todas">
-            Todas
-          </button>
-          <button value="design">Design</button>
-          <button value="tecnologia">Tecnologia</button>
-          <button value="design">Programação</button>
-          <button id="special-concursos" value="ti-concursos">
-            Ti Concursos
-          </button>
-        </div>
-
-        <div className="search">
-          <input type="search" placeholder="Procurar" name="procura" />
-          <MagnifyingGlassIcon size={16} />
-        </div>
-      </FilterContainer>
-
+      <Filter posts={posts} onFilter={setFilteredPosts} />
       <ListContainer>
-        {posts.map((post) => (
-          <PostCard
-            key={post.id}
-            title={post.title}
-            subtitle={post.subtitle}
-            tag={post.tag}
-            author={post.author}
-            date={post.dateCreated}
-            image={
-              post.contentJSON?.blocks?.find((block) => block.type === 'image')
-                ?.data.file?.url
-            }
-            link={`/post/${post.id}`}
-          />
-        ))}
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              subtitle={post.subtitle}
+              tag={post.tag}
+              author={post.author}
+              date={post.dateCreated}
+              image={
+                post.contentJSON?.blocks?.find(
+                  (block) => block.type === 'image'
+                )?.data.file?.url
+              }
+              link={`/post/${post.id}`}
+            />
+          ))
+        ) : (
+          <div style={{ height: '122px', paddingTop: '50px' }}>
+            <h2>Nenhum post encontrado.</h2>
+          </div>
+        )}
       </ListContainer>
     </PostListContainer>
   );

@@ -1,5 +1,5 @@
 //rrd imports
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 //styles
 import {
@@ -29,6 +29,8 @@ export function Header() {
   //hooks
   const [user, setUser] = useState<User | null>(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     //verificar se tem alguém logado(no caso admin)
     const isLoggedIn = localStorage.getItem('isLoggedInAdmin') === 'true';
@@ -52,15 +54,34 @@ export function Header() {
     navRef.current?.classList.toggle('open');
   }
 
+  function handleSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const searchTerm = formData.get('search-term') as string;
+
+    if (searchTerm.trim()) {
+      navigate(`/search_posts?search_term=${encodeURIComponent(searchTerm)}`);
+    }
+  }
+
   return (
     <HeaderContainer>
       <HeaderContent>
         <Link to="/">Blog</Link>
 
-        <SearchInput>
-          <input type="search" placeholder="Procurar" name="procura" />
-          <MagnifyingGlassIcon size={16} />
-        </SearchInput>
+        <search>
+          <SearchInput onSubmit={handleSearch}>
+            <input
+              type="search"
+              placeholder="Buscar posts..."
+              name="search-term"
+            />
+
+            <button type="submit">
+              <MagnifyingGlassIcon size={16} />
+            </button>
+          </SearchInput>
+        </search>
 
         <MobileOpenMenu
           aria-expanded="false"

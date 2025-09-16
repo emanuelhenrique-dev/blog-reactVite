@@ -36,7 +36,7 @@ export const HeaderContent = styled.div`
   }
 `;
 
-export const SearchInput = styled.div`
+export const SearchInput = styled.form`
   display: flex;
   align-items: center;
   padding: 6px 16px;
@@ -59,9 +59,11 @@ export const SearchInput = styled.div`
     color: ${(props) => props.theme.colors['base-title']};
   }
 
-  svg {
+  button {
     flex-shrink: 0;
     cursor: pointer;
+    width: 16px;
+    height: 16px;
   }
 
   &:focus-within {

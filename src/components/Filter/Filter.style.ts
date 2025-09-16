@@ -1,33 +1,7 @@
 import styled from 'styled-components';
 
-export const PostListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 24px 20px;
-
-  @media (max-width: 956px) {
-    gap: 18px;
-  }
-`;
-
-export const PostsListHeading = styled.div`
-  border-bottom: 2px solid ${(props) => props.theme.colors['blue-primary']};
-
-  h2 {
-    display: inline;
-    padding: 2px 6px;
-    background-color: ${(props) => props.theme.colors['blue-primary']};
-
-    font-family: 'Noto Sans';
-    font-weight: 600;
-    font-size: 1.3125rem;
-    line-height: 130%;
-    color: ${(props) => props.theme.colors.white};
-  }
-`;
-
 export const FilterContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -51,13 +25,13 @@ export const FilterContainer = styled.div`
       background-color: ${(props) => props.theme.colors.background};
 
       &:hover {
-        color: ${(props) => props.theme.colors['base-text-hover']} !important;
-        background-color: ${(props) => props.theme.colors['blue-primary']};
+        color: ${(props) => props.theme.colors.white};
+        background-color: rgba(41, 128, 185, 0.64);
       }
 
       &.selected {
-        color: ${(props) => props.theme.colors.white};
-        background-color: rgba(41, 128, 185, 0.64);
+        color: ${(props) => props.theme.colors['base-text-hover']} !important;
+        background-color: ${(props) => props.theme.colors['blue-primary']};
       }
     }
 
@@ -94,6 +68,7 @@ export const FilterContainer = styled.div`
 
     svg {
       flex-shrink: 0;
+      color: ${(props) => props.theme.colors['base-title']};
     }
 
     &:focus-within {
@@ -112,14 +87,4 @@ export const FilterContainer = styled.div`
       }
     }
   }
-`;
-
-export const ListContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 14px;
-  margin: 0 auto;
 `;

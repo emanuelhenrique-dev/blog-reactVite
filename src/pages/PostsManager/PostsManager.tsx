@@ -22,6 +22,7 @@ import { ListContainer } from '../Home/components/PostList/PostList.style';
 import { FeaturedPosts } from '../Home/components/FeaturedPosts/FeaturedPosts';
 import { GearIcon, XIcon } from '@phosphor-icons/react';
 import type { MainPosts, Post } from '../../reducers/posts/reducer';
+import { Filter } from '../../components/Filter/FIlter';
 
 export async function PostsManagerLoader() {
   const user = localStorage.getItem('adminUser');
@@ -52,6 +53,11 @@ export function PostsManager() {
   const navigate = useNavigate();
 
   const { posts, mainPosts, updateMainPost, removePost } = usePosts();
+
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
+  // para os Featured posts
+  const [filteredPostsTFeatured, setFilteredPostsTFeature] =
+    useState<Post[]>(posts);
 
   function handleLogout() {
     localStorage.removeItem('isLoggedInAdmin');
@@ -111,33 +117,40 @@ export function PostsManager() {
               weight="fill"
               onClick={handleCloseOverlay}
             />
+            <Filter posts={posts} onFilter={setFilteredPostsTFeature} />
             {/* Aqui você lista todos os posts para escolher para o FeaturedPosts*/}
             <ListContainer>
-              {posts.map((post) => (
-                <div
-                  className="select-post"
-                  onClick={() => {
-                    if (overlayState.slot) {
-                      handleChangeFeaturedPosts(post.id, overlayState.slot);
-                    }
-                  }}
-                  key={post.id}
-                >
-                  <PostCard
-                    title={post.title}
-                    subtitle={post.subtitle}
-                    tag={post.tag}
-                    author={post.author}
-                    date={post.dateCreated}
-                    image={
-                      post.contentJSON?.blocks?.find(
-                        (block: OutputBlockData) => block.type === 'image'
-                      )?.data?.file?.url
-                    }
-                    link={''}
-                  />
+              {filteredPostsTFeatured.length > 0 ? (
+                filteredPostsTFeatured.map((post) => (
+                  <div
+                    className="select-post"
+                    onClick={() => {
+                      if (overlayState.slot) {
+                        handleChangeFeaturedPosts(post.id, overlayState.slot);
+                      }
+                    }}
+                    key={post.id}
+                  >
+                    <PostCard
+                      title={post.title}
+                      subtitle={post.subtitle}
+                      tag={post.tag}
+                      author={post.author}
+                      date={post.dateCreated}
+                      image={
+                        post.contentJSON?.blocks?.find(
+                          (block: OutputBlockData) => block.type === 'image'
+                        )?.data?.file?.url
+                      }
+                      link={''}
+                    />
+                  </div>
+                ))
+              ) : (
+                <div style={{ height: '122px', paddingTop: '50px' }}>
+                  <h2>Nenhum post encontrado.</h2>
                 </div>
-              ))}
+              )}
             </ListContainer>
           </div>
         </OverlayFeaturedPost>
@@ -165,50 +178,57 @@ export function PostsManager() {
 
       <div className="Posts">
         <h3>Posts Disponíveis</h3>
+        <Filter posts={posts} onFilter={setFilteredPosts} />
         <ListContainer>
-          {posts.map((post, index) => (
-            <PostCardContainer
-              key={post.id}
-              ref={(el) => {
-                cardRefs.current[index] = el;
-              }}
-            >
-              <Overlay>
-                <ButtonsAction
-                  primaryAction={{
-                    label: 'Editar Post',
-                    onClick: () =>
-                      navigate(
-                        `/dashboard2490admin/posts-manager/${post.id}/edit_post`
-                      )
-                  }}
-                  secondaryAction={{
-                    label: 'Deletar Post',
-                    onClick: () => {
-                      removePost(post.id);
-                    }
-                  }}
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post, index) => (
+              <PostCardContainer
+                key={post.id}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+              >
+                <Overlay>
+                  <ButtonsAction
+                    primaryAction={{
+                      label: 'Editar Post',
+                      onClick: () =>
+                        navigate(
+                          `/dashboard2490admin/posts-manager/${post.id}/edit_post`
+                        )
+                    }}
+                    secondaryAction={{
+                      label: 'Deletar Post',
+                      onClick: () => {
+                        removePost(post.id);
+                      }
+                    }}
+                  />
+                </Overlay>
+                <div
+                  className="trigger-overlay"
+                  onClick={() => toggleCardOverlayActive(index)}
+                ></div>
+                <PostCard
+                  title={post.title}
+                  subtitle={post.subtitle}
+                  tag={post.tag}
+                  author={post.author}
+                  date={post.dateCreated}
+                  image={
+                    post.contentJSON?.blocks?.find(
+                      (block: OutputBlockData) => block.type === 'image'
+                    )?.data?.file?.url
+                  }
+                  link={`/dashboard2490admin/posts-manager/${post.id}`}
                 />
-              </Overlay>
-              <div
-                className="trigger-overlay"
-                onClick={() => toggleCardOverlayActive(index)}
-              ></div>
-              <PostCard
-                title={post.title}
-                subtitle={post.subtitle}
-                tag={post.tag}
-                author={post.author}
-                date={post.dateCreated}
-                image={
-                  post.contentJSON?.blocks?.find(
-                    (block: OutputBlockData) => block.type === 'image'
-                  )?.data?.file?.url
-                }
-                link={`/dashboard2490admin/posts-manager/${post.id}`}
-              />
-            </PostCardContainer>
-          ))}
+              </PostCardContainer>
+            ))
+          ) : (
+            <div style={{ height: '122px', paddingTop: '50px' }}>
+              <h2>Nenhum post encontrado.</h2>
+            </div>
+          )}
         </ListContainer>
       </div>
     </PostManagerContainer>

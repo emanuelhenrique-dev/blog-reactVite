@@ -137,24 +137,30 @@ export const OverlayFeaturedPost = styled.div`
 
   .modal {
     position: relative;
+    width: min(960px, 100%);
     margin-block: 100px 50px;
     padding: 30px;
     height: fit-content;
-    background-color: ${(props) => props.theme.colors['base-input']};
+    background-color: rgba(40, 51, 65, 0.4);
     border-radius: 20px;
+    border: 1px solid rgba(97, 109, 124, 0.4);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    overflow-x: hidden;
 
     h2 {
       font-weight: 600;
       font-size: 1.5rem;
       line-height: 1.75rem;
-      color: ${(props) => props.theme.colors['base-title']};
+      color: ${(props) => props.theme.colors['white']};
+    }
 
-      @media (max-width: 600px) {
+    @media (max-width: 600px) {
+      padding: 20px 10px 10px 10px;
+      h2 {
         font-size: 1rem;
       }
     }
