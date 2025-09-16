@@ -35,8 +35,7 @@ export const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
-        loader: postLoader
+        element: <Home />
       },
       {
         path: '/post/:id',
