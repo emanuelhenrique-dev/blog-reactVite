@@ -37,7 +37,11 @@ export function PostCard({
 
   return (
     <PostCardContainer to={link}>
-      <ImageWrapper $category={tag as 'Tecnologia' | 'Design' | 'Ti Concursos'}>
+      <ImageWrapper
+        $category={
+          tag as 'Tecnologia' | 'Design' | 'Programação' | 'Ti Concursos'
+        }
+      >
         <img src={image ?? defaultImage} alt="Post Thumbnail" />
         <span>{tag}</span>
       </ImageWrapper>

@@ -127,14 +127,18 @@ export const Tag = styled.span<TagProps>`
       ? theme.colors['tag-blue2']
       : $category === 'Design'
       ? theme.colors['tag-pink2']
-      : theme.colors['tag-green2']};
+      : $category === 'Programação'
+      ? theme.colors['tag-green2']
+      : theme.colors['tag-purple2']};
 
   color: ${({ $category, theme }) =>
     $category === 'Tecnologia'
       ? theme.colors['tag-blue']
       : $category === 'Design'
       ? theme.colors['tag-pink']
-      : theme.colors['tag-green']};
+      : $category === 'Programação'
+      ? theme.colors['tag-green']
+      : theme.colors['tag-purple']};
 `;
 
 export const FeaturedMain = styled.div`

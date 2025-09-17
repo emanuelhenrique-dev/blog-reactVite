@@ -64,6 +64,7 @@ export const FormHeader = styled.div`
   }
 
   .title-input {
+    position: relative;
     border: 1px dashed #2980b9;
     border-radius: 5px;
 
@@ -85,9 +86,21 @@ export const FormHeader = styled.div`
       resize: none;
       overflow: hidden;
     }
+
+    span {
+      position: absolute;
+      bottom: 7px;
+      right: 7px;
+      background-color: #b92929ff;
+      color: ${(props) => props.theme.colors['white']};
+      padding: 2px 6px;
+      border-radius: 5px;
+      opacity: 0.8;
+    }
   }
 
   .subtitle-input {
+    position: relative;
     border: 1px dashed #2980b9;
     border-radius: 5px;
     background-color: ${(props) => props.theme.colors['base-input']};
@@ -107,6 +120,18 @@ export const FormHeader = styled.div`
 
       resize: none;
       overflow: hidden;
+    }
+
+    span {
+      font-size: 0.8rem;
+      position: absolute;
+      bottom: 3px;
+      right: 7px;
+      background-color: #b92929ff;
+      color: ${(props) => props.theme.colors['white']};
+      padding: 2px 6px;
+      border-radius: 5px;
+      opacity: 0.8;
     }
   }
 
@@ -158,7 +183,7 @@ export const FormHeader = styled.div`
 export const TagInput = styled(TagPost)`
   padding: 0;
 
-  border: 1px dashed #2980b9;
+  border: 1px dashed;
   select {
     padding: 9px 13.5px;
     width: 100%;
@@ -173,14 +198,18 @@ export const TagInput = styled(TagPost)`
           ? theme.colors['tag-blue2']
           : $category === 'Design'
           ? theme.colors['tag-pink2']
-          : theme.colors['tag-green2']};
+          : $category === 'Programação'
+          ? theme.colors['tag-green2']
+          : theme.colors['tag-purple2']};
 
     color: ${({ $category, theme }) =>
       $category === 'Tecnologia'
         ? theme.colors['tag-blue']
         : $category === 'Design'
         ? theme.colors['tag-pink']
-        : theme.colors['tag-green']};
+        : $category === 'Programação'
+        ? theme.colors['tag-green']
+        : theme.colors['tag-purple']};
   }
 `;
 

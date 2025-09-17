@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
 export const EditorContainer = styled.div`
+  .ce-paragraph {
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: ${(props) => props.theme.colors['base-subtitle']};
+    margin-block-end: 8px;
+  }
+
   h1.ce-header {
     font-size: 2.25rem; /* 36px */
     line-height: 2.5rem; /* 40px */
@@ -9,26 +17,54 @@ export const EditorContainer = styled.div`
   h2.ce-header {
     font-size: 1.5rem; /* 24px */
     line-height: 1.75rem; /* 28px */
+    font-weight: 600;
   }
 
   h3.ce-header {
     font-size: 1.25rem; /* 20px */
     line-height: 1.5rem; /* 24px */
+    font-weight: 600;
   }
 
   h4.ce-header {
     font-size: 1.125rem; /* 18px */
     line-height: 1.5rem; /* 24px */
+    font-weight: 600;
   }
 
   h5.ce-header {
     font-size: 1rem; /* 16px */
     line-height: 1.5rem; /* 24px */
+    font-weight: 600;
   }
 
   h6.ce-header {
     font-size: 0.875rem; /* 14px */
     line-height: 1.25rem; /* 20px */
+    font-weight: 600;
+  }
+
+  // list
+  ol,
+  ul {
+    padding-left: 30px;
+    overflow-x: hidden;
+    margin-bottom: 15px;
+    li {
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 2rem;
+      margin-bottom: 5px;
+    }
+  }
+
+  ul li {
+    list-style-type: circle;
+  }
+  li.cdx-list__item:before {
+    color: ${(props) => props.theme.colors['blue-primary']} !important;
+    list-style-type: circle;
+    content: '⚬';
   }
 
   //cada bloco

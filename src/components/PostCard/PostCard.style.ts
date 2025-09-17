@@ -91,7 +91,9 @@ export const ImageWrapper = styled.div<TagProps>`
         ? theme.colors['tag-blue']
         : $category === 'Design'
         ? theme.colors['tag-pink']
-        : theme.colors['tag-green']};
+        : $category === 'Programação'
+        ? theme.colors['tag-green']
+        : theme.colors['tag-purple']};
   }
 `;
 

@@ -139,6 +139,27 @@ export const PostContent = styled.section`
     line-height: 1.25rem; /* 20px */
   }
 
+  // list
+  ol,
+  ul {
+    padding-left: 40px;
+    overflow-x: hidden;
+    margin-block-end: 15px;
+    li {
+      font-weight: 400;
+      font-size: 1.25rem;
+      line-height: 2rem;
+      margin-block-end: 5px;
+    }
+  }
+
+  ul li {
+    list-style-type: circle;
+  }
+  li::marker {
+    color: ${(props) => props.theme.colors['blue-primary']};
+  }
+
   //figure or image
 
   figure {
@@ -194,6 +215,16 @@ export const PostContent = styled.section`
     p {
       font-size: 1.08rem;
       line-height: 1.8rem;
+    }
+
+    // list
+    ol,
+    ul {
+      padding-left: 30px;
+      li {
+        font-size: 1.08rem;
+        line-height: 1.8rem;
+      }
     }
 
     // image

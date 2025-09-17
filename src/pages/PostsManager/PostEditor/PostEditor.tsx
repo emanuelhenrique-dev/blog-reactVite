@@ -199,6 +199,7 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
                   <select {...register('tag')}>
                     <option value="Tecnologia">Tecnologia</option>
                     <option value="Design">Design</option>
+                    <option value="Programação">Programação</option>
                     <option value="Ti Concursos">Ti Concursos</option>
                   </select>
                 </TagInput>
