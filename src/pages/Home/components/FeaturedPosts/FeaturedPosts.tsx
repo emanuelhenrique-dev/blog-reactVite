@@ -14,6 +14,7 @@ import type { OutputBlockData } from '@editorjs/editorjs';
 import { useNavigate } from 'react-router-dom';
 import type { SlotKey } from '../../../PostsManager/PostsManager';
 import { usePosts } from '../../../../contexts/PostsContext';
+import { formatDate } from '../../../../util/FormatDate';
 
 interface FeaturedPostsProps {
   title: string;
@@ -54,7 +55,7 @@ export function FeaturedPosts({
         : 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit amet consectetur adipiscing elit quisque faucibus.',
       Author: post ? post.author : 'Author name',
       AvatarImg: post ? post.authorAvatar : avatarImg,
-      CreateDate: post ? post.dateCreated : '25 Dezembro 2025'
+      CreateDate: post ? post.dateCreated : 'data desconhecida'
     };
 
     return card;
@@ -94,7 +95,7 @@ export function FeaturedPosts({
               <span>{mainCard.Author}</span>
               <span></span>
               <span>
-                <CalendarDotsIcon size={10} /> {mainCard.CreateDate}
+                <CalendarDotsIcon size={10} /> {formatDate(mainCard.CreateDate)}
               </span>
             </div>
             <p>{mainCard.Subtile}</p>
@@ -130,7 +131,7 @@ export function FeaturedPosts({
                 <span></span>
                 <span>
                   <CalendarDotsIcon size={10} />
-                  {side1Card.CreateDate}
+                  {formatDate(side1Card.CreateDate)}
                 </span>
               </div>
               <p>{side1Card.Subtile}</p>
@@ -162,7 +163,7 @@ export function FeaturedPosts({
                 <span></span>
                 <span>
                   <CalendarDotsIcon size={10} />
-                  {side2Card.CreateDate}
+                  {formatDate(side2Card.CreateDate)}
                 </span>
               </div>
               <p>{side2Card.Subtile}</p>

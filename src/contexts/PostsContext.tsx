@@ -46,9 +46,18 @@ export function PostsContextProvider({ children }: CartContextProviderProps) {
     },
     (initialState) => {
       const storedPostsAsJSON = localStorage.getItem(
-        '@blog-react:posts-state-1.0.0'
+        '@blog-react:posts-state-1.0.5'
       );
-      return storedPostsAsJSON ? JSON.parse(storedPostsAsJSON) : initialState;
+      const parsed = storedPostsAsJSON
+        ? JSON.parse(storedPostsAsJSON)
+        : initialState;
+
+      parsed.posts = parsed.posts.sort(
+        (a: Post, b: Post) =>
+          new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+      );
+      console.log(parsed);
+      return parsed;
     }
   );
 
@@ -77,7 +86,7 @@ export function PostsContextProvider({ children }: CartContextProviderProps) {
   useEffect(() => {
     const postsStateJSON = JSON.stringify(postsState);
 
-    localStorage.setItem('@blog-react:posts-state-1.0.0', postsStateJSON);
+    localStorage.setItem('@blog-react:posts-state-1.0.5', postsStateJSON);
   }, [postsState]);
 
   return (

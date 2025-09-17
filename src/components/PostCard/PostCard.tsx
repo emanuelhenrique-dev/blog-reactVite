@@ -9,6 +9,7 @@ import { CardInfo, ImageWrapper, PostCardContainer } from './PostCard.style';
 
 // styled-components import
 import { useTheme } from 'styled-components';
+import { formatDate } from '../../util/FormatDate';
 
 interface PostCardProps {
   title: string;
@@ -47,7 +48,7 @@ export function PostCard({
           <span>{author}</span>
           <span></span>
           <span>
-            <CalendarDotsIcon size={14} /> {date}
+            <CalendarDotsIcon size={14} /> {formatDate(date)}
           </span>
         </div>
         <h3>{title}</h3>

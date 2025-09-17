@@ -13,7 +13,7 @@ function getLoggedAdminUser() {
 
 //Carregar os posts antes de carregar a pagina
 export async function postLoader({ params }: { params?: Params<string> }) {
-  const storedPosts = localStorage.getItem('@blog-react:posts-state-1.0.0');
+  const storedPosts = localStorage.getItem('@blog-react:posts-state-1.0.5');
 
   if (!storedPosts) {
     throw new Response(JSON.stringify({ message: 'Posts não encontrados' }), {

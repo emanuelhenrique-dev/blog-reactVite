@@ -8,8 +8,8 @@ export const posts = [
     authorAvatar: '/avatar.png',
     lastUpdateAuthor: 'Manoel Junior',
     tag: 'Tecnologia',
-    dateCreated: '01 Dezembro 2024',
-    dateUpdated: '11 de setembro de 2025',
+    dateCreated: '2024-12-01T03:22:31.546Z',
+    dateUpdated: '2024-12-11T03:22:31.546Z',
     contentJSON: {
       time: 1757618252492,
       blocks: [
@@ -118,8 +118,8 @@ export const posts = [
     authorAvatar: '/avatar2.png',
     lastUpdateAuthor: 'Emanuel Henrique',
     tag: 'Design',
-    dateCreated: '10 Dezembro 2024',
-    dateUpdated: '11 Dezembro 2024',
+    dateCreated: '2024-12-10T03:22:31.546Z',
+    dateUpdated: '2024-12-11T03:22:31.546Z',
     contentJSON: {
       time: 1757341535345,
       version: '2.29.1',
@@ -169,7 +169,7 @@ export const posts = [
     authorAvatar: '/avatar1.png',
     lastUpdateAuthor: 'Desconhecido',
     tag: 'Programação',
-    dateCreated: '15 Dezembro 2024',
+    dateCreated: '2024-12-15T03:22:31.546Z',
     dateUpdated: '2025-09-10T02:22:08.096Z',
     contentJSON: {
       time: 1757470926249,
@@ -231,8 +231,8 @@ export const posts = [
     authorAvatar: '/avatar1.png',
     lastUpdateAuthor: 'Manoel Junior',
     tag: 'Programação',
-    dateCreated: '15 Dezembro 2024',
-    dateUpdated: '11 de setembro de 2025',
+    dateCreated: '2024-12-20T03:22:31.546Z',
+    dateUpdated: '2025-09-11T03:22:31.546Z',
     contentJSON: {
       time: 1757470423041,
       blocks: [
@@ -318,8 +318,8 @@ export const posts = [
     author: 'Manoel Junior',
     authorAvatar: '/avatar1.png',
     lastUpdateAuthor: 'Manoel Junior',
-    dateCreated: '11 de setembro de 2025',
-    dateUpdated: '14 de setembro de 2025',
+    dateCreated: '2025-09-11T03:22:31.546Z',
+    dateUpdated: '2025-09-14T03:22:31.546Z',
     title:
       'Confira o visual de Robert Downey Jr. como Doctor Doom em Vingadores: Doomsday e Mais',
     subtitle:
@@ -386,8 +386,8 @@ export const posts = [
     author: 'Manoel Junior',
     authorAvatar: '/avatar1.png',
     lastUpdateAuthor: 'Manoel Junior',
-    dateCreated: '14 de setembro de 2025',
-    dateUpdated: '14 de setembro de 2025',
+    dateCreated: '2025-09-14T03:22:31.546Z',
+    dateUpdated: '2025-09-14T03:22:31.546Z',
     title:
       'Gigabyte lança placas-mãe com IA que prometem até 25% mais desempenho em jogos',
     subtitle:
@@ -504,8 +504,8 @@ export const posts = [
     author: 'Manoel Junior',
     authorAvatar: '/avatar1.png',
     lastUpdateAuthor: 'Manoel Junior',
-    dateCreated: '14 de setembro de 2025',
-    dateUpdated: '15 de setembro de 2025',
+    dateCreated: '2025-09-15T03:22:31.546Z',
+    dateUpdated: '2025-09-16T03:22:31.546Z',
     title:
       'NVIDIA e Kioxia planejam SSDs até 100 vezes mais rápidos que os atuais',
     subtitle:

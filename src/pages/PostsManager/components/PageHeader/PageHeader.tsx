@@ -9,6 +9,7 @@ import {
   HeaderTop,
   PageHeaderContainer
 } from './PageHeader.style';
+import { formatDate } from '../../../../util/FormatDate';
 
 interface PageHeaderProps extends ButtonsActionProps {
   title: string; // Título principal (ex: "Gerenciamento dos Posts")
@@ -62,10 +63,11 @@ export function PageHeader({
 
           {(createdAt || updatedAt) && (
             <Dates>
-              {createdAt && <p>Post criado no dia {createdAt}.</p>}
+              {createdAt && <p>Post criado no dia {formatDate(createdAt)}.</p>}
               {updatedAt && (
                 <p title={lastUpdateAuthor}>
-                  Data da Ultima atualização({lastUpdateAuthor}) : {updatedAt}
+                  Data da Ultima atualização({lastUpdateAuthor}) :{' '}
+                  {formatDate(updatedAt)}
                 </p>
               )}
             </Dates>

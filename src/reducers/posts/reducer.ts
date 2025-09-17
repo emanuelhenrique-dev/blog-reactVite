@@ -44,7 +44,7 @@ export const PostsReducer = (state: PostsState, action: Actions) => {
     // criar post
     case ActionTypes.CREATE_POST: {
       return produce(state, (draft) => {
-        draft.posts.push(action.payload.data);
+        draft.posts.unshift(action.payload.data);
       });
     }
     // atualizar post

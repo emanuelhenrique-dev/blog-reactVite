@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 //assets
-import { formatNewDate } from '../../../util/FormatNewDate';
+import { formatDate } from '../../../util/FormatDate';
 import { CalendarDotsIcon } from '@phosphor-icons/react';
 
 //components
@@ -55,7 +55,6 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
   const { posts, addPost, updatePost } = usePosts();
   const post = posts.find((post) => post.id === id);
 
-  console.log(user.name);
   const {
     register,
     handleSubmit,
@@ -89,8 +88,14 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
     author: mode == 'edit' && post ? post.author : user.name,
     authorAvatar: mode == 'edit' && post ? post.authorAvatar : user.avatarImg,
     lastUpdateAuthor: 'Pré-visualização',
-    dateCreated: mode == 'edit' && post ? post.dateCreated : formatNewDate(),
-    dateUpdated: mode == 'edit' && post ? post.dateUpdated : formatNewDate(),
+    dateCreated:
+      mode == 'edit' && post
+        ? post.dateCreated
+        : formatDate(new Date().toISOString()),
+    dateUpdated:
+      mode == 'edit' && post
+        ? post.dateUpdated
+        : formatDate(new Date().toISOString()),
     ...values // ⚡ junta title, subtitle, tag, contentJSON vindos do form
   };
 
@@ -101,8 +106,8 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
       author: user ? user.name : 'desconhecido',
       authorAvatar: user ? user.avatarImg : '/avatarDefault.png',
       lastUpdateAuthor: user ? user.name : 'desconhecido',
-      dateCreated: formatNewDate(),
-      dateUpdated: formatNewDate(),
+      dateCreated: new Date().toISOString(),
+      dateUpdated: new Date().toISOString(),
       ...data
     };
 
@@ -125,7 +130,7 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
       // authorAvatar: post.authorAvatar,
       lastUpdateAuthor: user ? user.name : 'desconhecido',
       // dateCreated: post.dateCreated,
-      dateUpdated: formatNewDate(),
+      dateUpdated: new Date().toISOString(),
       ...data
     };
     updatePost(editedPost);

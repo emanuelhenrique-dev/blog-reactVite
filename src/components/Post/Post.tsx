@@ -1,8 +1,12 @@
-import { CalendarDotsIcon } from '@phosphor-icons/react';
 import type { Post } from '../../reducers/posts/reducer';
-import { PostContainer, PostContent, PostHeader, TagPost } from './Post.style';
 import { renderBlock } from '../../pages/PostsManager/PostEditor/renderBlock/renderBlock';
 
+//styles
+import { PostContainer, PostContent, PostHeader, TagPost } from './Post.style';
+
+//util
+import { formatDate } from '../../util/FormatDate';
+import { CalendarDotsIcon } from '@phosphor-icons/react';
 interface PostProps {
   post: Post;
 }
@@ -25,7 +29,7 @@ export function Post({ post }: PostProps) {
           <p>{post.author}</p>
           <div className="divider"></div>
           <CalendarDotsIcon size={16} />
-          <p>{post.dateCreated}</p>
+          <p>{formatDate(post.dateCreated)}</p>
         </div>
       </PostHeader>
       <PostContent>
