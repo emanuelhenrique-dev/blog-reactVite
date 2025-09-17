@@ -58,11 +58,15 @@ export const EditorContainer = styled.div`
     }
   }
 
+  li.cdx-list__item:before {
+    color: ${(props) => props.theme.colors['blue-primary']} !important;
+  }
+
   ul li {
     list-style-type: circle;
   }
-  li.cdx-list__item:before {
-    color: ${(props) => props.theme.colors['blue-primary']} !important;
+
+  ul li.cdx-list__item:before {
     list-style-type: circle;
     content: '⚬';
   }

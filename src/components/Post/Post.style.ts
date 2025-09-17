@@ -142,6 +142,10 @@ export const PostContent = styled.section`
   // list
   ol,
   ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
     padding-left: 40px;
     overflow-x: hidden;
     margin-block-end: 15px;
@@ -149,13 +153,20 @@ export const PostContent = styled.section`
       font-weight: 400;
       font-size: 1.25rem;
       line-height: 2rem;
-      margin-block-end: 5px;
     }
+  }
+
+  ol li {
+    padding-left: 8px;
+  }
+  ol li::marker {
+    position: fixed;
   }
 
   ul li {
     list-style-type: circle;
   }
+
   li::marker {
     color: ${(props) => props.theme.colors['blue-primary']};
   }

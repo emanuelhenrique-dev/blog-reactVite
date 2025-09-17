@@ -164,7 +164,11 @@ export function PostEditor({ mode }: { mode: 'new' | 'edit' }) {
         lastUpdateAuthor={post?.lastUpdateAuthor}
         primaryAction={{
           label: mode == 'edit' ? 'Salvar Mudança' : 'Criar Post',
-          onClick: () => console.log('Post atualizado')
+          onClick: () => {
+            if (!isEditing) {
+              alert('So dar para salvar no editor do Post');
+            }
+          }
         }}
         type={'submit'}
         form={'postForm'}
