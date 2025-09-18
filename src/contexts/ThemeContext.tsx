@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode
+} from 'react';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from '../styles/themes/default';
 import { darkTheme } from '../styles/themes/darkTheme';
@@ -10,11 +16,17 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeContextProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    const saveStoragetheme = localStorage.getItem('@blog-react:theme-1.0.0');
+    return saveStoragetheme ? JSON.parse(saveStoragetheme) : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@blog-react:theme-1.0.0', JSON.stringify(isDark));
+  }, [isDark]); // O efeito só é executado quando isDark muda
 
   function toggleTheme() {
     setIsDark((prev) => !prev);
-    console.log(isDark);
   }
 
   const theme = isDark ? darkTheme : defaultTheme;
