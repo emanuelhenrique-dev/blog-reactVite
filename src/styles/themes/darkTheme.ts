@@ -23,8 +23,10 @@ export const darkTheme = {
     'tag-blue': '#026AA2',
     'tag-green': '#027A48',
     'tag-pink': '#C11574',
+    'tag-purple': '#5900A6',
     'tag-blue2': '#D3EDFF',
     'tag-green2': '#ECFDF3',
-    'tag-pink2': '#FDF2FA'
+    'tag-pink2': '#FDF2FA',
+    'tag-purple2': '#E4D4F4'
   }
 };

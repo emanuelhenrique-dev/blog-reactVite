@@ -64,6 +64,11 @@ export const SearchInput = styled.form`
     cursor: pointer;
     width: 16px;
     height: 16px;
+    background-color: transparent;
+
+    svg {
+      color: ${(props) => props.theme.colors['base-title']};
+    }
   }
 
   &:focus-within {
