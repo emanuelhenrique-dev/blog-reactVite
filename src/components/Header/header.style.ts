@@ -138,6 +138,7 @@ export const HeaderNav = styled.nav`
       height: fit-content;
 
       a {
+        position: relative;
         font-family: 'Noto Sans';
         font-weight: 400;
         font-size: 1rem;
@@ -145,10 +146,18 @@ export const HeaderNav = styled.nav`
         text-transform: none;
         padding: 2px 6px;
 
-        &.active {
-          color: ${(props) => props.theme.colors.white};
+        &.active::after {
+          /* color: ${(props) => props.theme.colors.white};
           background-color: ${(props) => props.theme.colors['blue-primary']};
-          border-radius: 35px 5px 35px 5px;
+          border-radius: 35px 5px 35px 5px */
+
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: ${(props) => props.theme.colors['blue-primary']};
         }
       }
 
