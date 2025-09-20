@@ -98,13 +98,13 @@ export function Header() {
 
         <HeaderNav role="menu" ref={navRef}>
           <ul>
-            <li>
+            <li onClick={handleToggleMenu}>
               <NavLink to={'/'}>Inicio</NavLink>
             </li>
-            <li>
+            <li onClick={handleToggleMenu}>
               <NavLink to={'/about'}>Sobre</NavLink>
             </li>
-            <li>
+            <li onClick={handleToggleMenu}>
               <NavLink to={'/contact'}>Contato</NavLink>
             </li>
             <li id="login">
