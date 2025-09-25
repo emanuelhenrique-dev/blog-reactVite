@@ -5,6 +5,8 @@ Projeto demo de um Blog feito com REACT + TS + VITE
 Para entrar na administração:
 AdminAdress: (https://meu-blog-react.vercel.app/dashboard2490admin)
 
+Usuario/senha: Manoel/123456, Emanuel/654321
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
