@@ -24,6 +24,26 @@
 
 Projeto de demonstração de um blog desenvolvido com React, TypeScript e Vite. A aplicação inclui páginas públicas, visualização de artigos, busca, temas e uma área administrativa para gerenciar publicações.
 
+## Demonstração
+
+<p align="center">
+  <img alt="Página inicial do blog" src=".github/image01.png" width="100%" />
+</p>
+
+<p align="center">
+  <em>Página inicial com destaques, filtros e listagem de posts.</em>
+</p>
+
+### Gerenciamento de posts
+
+<p align="center">
+  <img alt="Detalhes de uma publicação no painel administrativo" src=".github/image02.png" width="100%" />
+</p>
+
+<p align="center">
+  <img alt="Editor de publicação no painel administrativo" src=".github/image03.png" width="100%" />
+</p>
+
 ## Visão geral
 
 - Página inicial com destaques e lista de posts
