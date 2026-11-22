@@ -1,8 +1,8 @@
 //assets
 import { ArrowUpRightIcon, CalendarDotsIcon } from '@phosphor-icons/react';
 import avatarImg from '/avatar.png';
-import defaultImage from '/src/assets/pexels-jplenio-1103970.jpg';
 import { AdminUsers } from '../../data/users';
+import { defaultImage, handleImageError } from '../../util/ImageFallback';
 
 // styles
 import { CardInfo, ImageWrapper, PostCardContainer } from './PostCard.style';
@@ -42,7 +42,11 @@ export function PostCard({
           tag as 'Tecnologia' | 'Design' | 'Programação' | 'Ti Concursos'
         }
       >
-        <img src={image ?? defaultImage} alt="Post Thumbnail" />
+        <img
+          src={image || defaultImage}
+          alt="Post Thumbnail"
+          onError={handleImageError}
+        />
         <span>{tag}</span>
       </ImageWrapper>
 

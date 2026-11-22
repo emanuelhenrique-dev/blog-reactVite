@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { JSX } from 'react';
 import DOMPurify from 'dompurify';
+import {
+  defaultImage,
+  handleImageError
+} from '../../../../util/ImageFallback';
 
 export const renderBlock = (block: any, index: number) => {
   // helper de segurança para limpa o html
@@ -113,8 +117,9 @@ export const renderBlock = (block: any, index: number) => {
       return (
         <figure key={index} className={classNames}>
           <img
-            src={file?.url}
+            src={file?.url || defaultImage}
             alt={caption || ''}
+            onError={handleImageError}
             style={{
               background: withBackground ? '#f7f7f7' : 'transparent'
             }}

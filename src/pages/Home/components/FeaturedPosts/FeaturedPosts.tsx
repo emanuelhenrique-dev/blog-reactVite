@@ -8,13 +8,16 @@ import {
   Tag
 } from './FeaturedPosts.style';
 import avatarImg from '/avatar.png';
-import defaultImage from '/src/assets/pexels-jplenio-1103970.jpg';
 import type { Post } from '../../../../reducers/posts/reducer';
 import type { OutputBlockData } from '@editorjs/editorjs';
 import { useNavigate } from 'react-router-dom';
 import type { SlotKey } from '../../../PostsManager/PostsManager';
 import { usePosts } from '../../../../contexts/PostsContext';
 import { formatDate } from '../../../../util/FormatDate';
+import {
+  defaultImage,
+  handleImageError
+} from '../../../../util/ImageFallback';
 
 interface FeaturedPostsProps {
   title: string;
@@ -84,7 +87,11 @@ export function FeaturedPosts({
               className="image-limit"
               onClick={() => navigate(`${path}/${mainCard.Id}`)}
             >
-              <img src={mainCard.Image} alt="post recomendado 1" />
+              <img
+                src={mainCard.Image}
+                alt="post recomendado 1"
+                onError={handleImageError}
+              />
             </div>
           </div>
           <PostInfo onClick={() => navigate(`${path}/${mainCard.Id}`)}>
@@ -120,6 +127,7 @@ export function FeaturedPosts({
                 onClick={() => navigate(`${path}/${side1Card.Id}`)}
                 src={side1Card.Image}
                 alt="post recomendado 2"
+                onError={handleImageError}
               />
             </div>
             <PostInfo onClick={() => navigate(`${path}/${side1Card.Id}`)}>
@@ -152,6 +160,7 @@ export function FeaturedPosts({
                 onClick={() => navigate(`${path}/${side2Card.Id}`)}
                 src={side2Card.Image}
                 alt="post recomendado 3"
+                onError={handleImageError}
               />
             </div>
             <PostInfo onClick={() => navigate(`${path}/${side2Card.Id}`)}>
